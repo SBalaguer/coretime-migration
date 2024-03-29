@@ -59,7 +59,3 @@ In this case, paraID 2084 will have a core until block 23_160_700, however will 
 > IMPORTANT :warning: 
 > This tool has a fixed estimated time of coretime sales [here](https://github.com/SBalaguer/coretime-migration/blob/6babf1f0b53efb32f7db63e331640c9cb4de7d26/index.js#L43). If neeed be, change this number accordingly when using it.
 
-
----
-From the discussion the other day starting sales on Apr 16th sounds good (we should aim to start sales anytime before 22_982_399). This would allow teams to fall on the 'team 2' category from Basti's drawing and hence having the chance to renew instead of having to buy on the open market.
-
