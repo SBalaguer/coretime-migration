@@ -125,9 +125,9 @@ const calculateCoretimeTime = (leases, so, lpd) => {
             const untilSale = Math.ceil(untilSaleRaw)
             const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH*TIMESLICE_LENGTH) * (untilSale - 1)
             if(untilSaleRaw > 1){
-                coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, renwCoreAtSaleNumber: untilSale - 1})
-            } else if (untilSaleRaw > 0) {
-                coretimeParaInfo.push({...paraInfo, coreUntilBlock:lastLeaseBlock + 1, renwCoreAtSaleNumber: "Buys on Open Market at first Sale"})
+                coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, renewCoreAtSaleCycle: untilSale - 1})
+            } else {
+                coretimeParaInfo.push({...paraInfo, coreUntilBlock:lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market"})
             }
         })
     })
