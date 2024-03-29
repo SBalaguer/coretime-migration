@@ -121,10 +121,13 @@ const calculateCoretimeTime = (leases, so, lpd) => {
         leases[leaseString].map(paraInfo =>{
             //we need to now add one to the LPs as we want to now when is the last block of the lease, and thet we remove one from the total block count.
             const lastLeaseBlock = (lease+1)*lpd + so - 1;
-            const untilSale = Math.ceil((lastLeaseBlock - CORETIME_SALES_START)/(REGION_LENGTH*TIMESLICE_LENGTH) + 1)
+            const untilSaleRaw = (lastLeaseBlock - CORETIME_SALES_START)/(REGION_LENGTH*TIMESLICE_LENGTH) + 1
+            const untilSale = Math.ceil(untilSaleRaw)
             const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH*TIMESLICE_LENGTH) * (untilSale - 1)
-            if(untilSale > 0){
+            if(untilSaleRaw > 1){
                 coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, renwCoreAtSaleNumber: untilSale - 1})
+            } else if (untilSaleRaw > 0) {
+                coretimeParaInfo.push({...paraInfo, coreUntilBlock:lastLeaseBlock + 1, renwCoreAtSaleNumber: "Buys on Open Market at first Sale"})
             }
         })
     })
