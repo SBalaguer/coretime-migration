@@ -2,7 +2,6 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { argv } from 'node:process';
 import parachainsInfo from './parachains.json' assert { type: "json" };
-import { Console } from 'node:console';
 
 let chain;
 let parachains;
@@ -16,10 +15,13 @@ argv.filter((val) => {
         } else {
             chain = 'polkadot'
             parachains = parachainsInfo.polkadot
+            console.log("Polkadot not yet available")
+            process.exit()
         }
     } else {
-        chain = 'polkadot'
-        parachains = parachainsInfo.polkadot
+        //makes kusama default for now
+        chain = 'kusama'
+        parachains = parachainsInfo.kusama
     }
 });
 
@@ -122,7 +124,7 @@ const calculateCoretimeTime = (leases, so, lpd) => {
             const untilSale = Math.ceil((lastLeaseBlock - CORETIME_SALES_START)/(REGION_LENGTH*TIMESLICE_LENGTH) + 1)
             const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH*TIMESLICE_LENGTH) * (untilSale - 1)
             if(untilSale > 0){
-                coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, coreUntilSale: untilSale})
+                coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, renwCoreAtSaleNumber: untilSale - 1})
             }
         })
     })
