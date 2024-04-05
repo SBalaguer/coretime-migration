@@ -62,7 +62,7 @@ async function main () {
     const {coretimeParaInfo} = calculateCoretimeTime(allRemainingLeases, slotOffset, leasePeriodDuration);
 
     console.log("**************************")
-    console.log("** CORETIME RENOVAITONS **")
+    console.log("** CORETIME RENOVATIONS **")
     console.log("**************************")
 
     console.log("ESTIMATED CORETIME SALE START ->", CORETIME_SALES_START)
@@ -95,7 +95,7 @@ const remainingLeases = async (clp) => {
         const keys = Object.keys(allRemainingLeases);
 
         //object:
-        // {reamiening_leases:[paraid1,...paraidn]}
+        // {remaining_leases:[paraid1,...paraidn]}
         const paraName = findParaName(humanParaID)
 
         if (keys.includes(String(lastLease))){
@@ -113,6 +113,9 @@ const calculateCoretimeTime = (leases, so, lpd) => {
     // {LP: [{para1}, {para2}, ... , {paran}]}
     // objective:
     // [{para1}, {para2}, ... , {paran} ]
+
+    // Migration does it like so: 
+    // https://github.com/paritytech/polkadot-sdk/blob/master/polkadot/runtime/parachains/src/coretime/migration.rs#L228-L247
 
     const coretimeParaInfo = []
 
