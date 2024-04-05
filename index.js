@@ -42,7 +42,7 @@ const buildApi = async (chain) => {
 const api = await buildApi(chain);
 
 // These are to be sourced by querying the chain when available. For now they are an educated guess.
-const CORETIME_SALES_START = 22757500;
+const CORETIME_SALES_START = 22793600;
 const REGION_LENGTH = 5040;
 const TIMESLICE_LENGTH = 80;
 
@@ -61,12 +61,27 @@ async function main() {
 
     const { coretimeParaInfo } = calculateCoretimeTime(allRemainingLeases, slotOffset, leasePeriodDuration);
 
+    const coresSummary = {}
+    let totalCount = 0;
+    coretimeParaInfo.map(paraInfo => {
+        totalCount = totalCount + 1
+        coresSummary[paraInfo.renewCoreAtSaleCycle] ? 
+            coresSummary[paraInfo.renewCoreAtSaleCycle] = coresSummary[paraInfo.renewCoreAtSaleCycle] + 1 : 
+            coresSummary[paraInfo.renewCoreAtSaleCycle] = 1;
+    })
+
     console.log("**************************")
     console.log("** CORETIME RENOVATIONS **")
     console.log("**************************")
 
     console.log("ESTIMATED CORETIME SALE START ->", CORETIME_SALES_START)
+    console.log();
+    console.log("TOTAL ACTIVE CORES -> ", totalCount)
     console.log()
+    console.log("CORES SUMMARY -> Number of estimated renewals per sale cycle.")
+    console.log(coresSummary)
+    console.log()
+    console.log("PARAID DETAILS")
     console.log(coretimeParaInfo)
 
 
@@ -91,6 +106,8 @@ const remainingLeases = async (clp) => {
         const remainingLeases = humanLeases.length;
         //we need to remove 1, as it's being counted on the array already.
         const lastLease = remainingLeases !== 0 ? clp + remainingLeases - 1 : 0;
+
+        if (lastLease === 0) { return }
 
         const keys = Object.keys(allRemainingLeases);
 
