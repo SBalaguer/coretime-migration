@@ -9,7 +9,7 @@ let parachains;
 argv.filter((val) => {
     const parsedVal = val.split("=");
     if (parsedVal[0] === 'chain') {
-        if (parsedVal[1] === 'kusama'){
+        if (parsedVal[1] === 'kusama') {
             chain = 'kusama';
             parachains = parachainsInfo.kusama
         } else {
@@ -27,14 +27,14 @@ argv.filter((val) => {
 
 const buildApi = async (chain) => {
     let api
-    switch (chain){
+    switch (chain) {
         case "kusama":
             const wsProviderKusama = new WsProvider('wss://kusama-rpc.polkadot.io');
-            api = await ApiPromise.create({ provider: wsProviderKusama });  
+            api = await ApiPromise.create({ provider: wsProviderKusama });
             break;
         default:
             const wsProviderPolkadot = new WsProvider('wss://rpc.polkadot.io');
-            api = await ApiPromise.create({ provider: wsProviderPolkadot });  
+            api = await ApiPromise.create({ provider: wsProviderPolkadot });
     }
     return api
 }
@@ -46,20 +46,20 @@ const CORETIME_SALES_START = 22757500;
 const REGION_LENGTH = 5040;
 const TIMESLICE_LENGTH = 80;
 
-async function main () {
+async function main() {
     // Get on-chain constants
-    const {slotOffset, leasePeriodDuration} = await getConstants();
+    const { slotOffset, leasePeriodDuration } = await getConstants();
 
     // Get last Nlock Number
-    const {lastBlockNumber} = await getCurrentBlockHeight()
+    const { lastBlockNumber } = await getCurrentBlockHeight()
 
 
     //Calculate current lease period
-    const currentLeasePeriod = Math.floor((lastBlockNumber-slotOffset)/leasePeriodDuration);
+    const currentLeasePeriod = Math.floor((lastBlockNumber - slotOffset) / leasePeriodDuration);
 
-    const {allRemainingLeases} = await remainingLeases(currentLeasePeriod, slotOffset, leasePeriodDuration)
+    const { allRemainingLeases } = await remainingLeases(currentLeasePeriod, slotOffset, leasePeriodDuration)
 
-    const {coretimeParaInfo} = calculateCoretimeTime(allRemainingLeases, slotOffset, leasePeriodDuration);
+    const { coretimeParaInfo } = calculateCoretimeTime(allRemainingLeases, slotOffset, leasePeriodDuration);
 
     console.log("**************************")
     console.log("** CORETIME RENOVATIONS **")
@@ -79,7 +79,7 @@ const getConstants = async () => {
     //how long a lease period is, in blocks.
     const leasePeriodDuration = await api.consts.slots.leasePeriod.toNumber();
 
-    return {slotOffset, leasePeriodDuration}
+    return { slotOffset, leasePeriodDuration }
 }
 
 const remainingLeases = async (clp) => {
@@ -90,22 +90,22 @@ const remainingLeases = async (clp) => {
         const humanLeases = leases.toHuman();
         const remainingLeases = humanLeases.length;
         //we need to remove 1, as it's being counted on the array already.
-        const lastLease = remainingLeases !== 0 ? clp + remainingLeases - 1: 0;
-        
+        const lastLease = remainingLeases !== 0 ? clp + remainingLeases - 1 : 0;
+
         const keys = Object.keys(allRemainingLeases);
 
         //object:
         // {remaining_leases:[paraid1,...paraidn]}
         const paraName = findParaName(humanParaID)
 
-        if (keys.includes(String(lastLease))){
-            allRemainingLeases[lastLease] = [...allRemainingLeases[lastLease], {paraID: humanParaID, name: paraName}]
+        if (keys.includes(String(lastLease))) {
+            allRemainingLeases[lastLease] = [...allRemainingLeases[lastLease], { paraID: humanParaID, name: paraName }]
         } else {
-            allRemainingLeases[lastLease] = [{paraID: humanParaID, name: paraName}]
+            allRemainingLeases[lastLease] = [{ paraID: humanParaID, name: paraName }]
         }
     });
 
-    return {allRemainingLeases}
+    return { allRemainingLeases }
 }
 
 const calculateCoretimeTime = (leases, so, lpd) => {
@@ -121,30 +121,30 @@ const calculateCoretimeTime = (leases, so, lpd) => {
 
     Object.keys(leases).map(leaseString => {
         const lease = Number(leaseString)
-        leases[leaseString].map(paraInfo =>{
+        leases[leaseString].map(paraInfo => {
             //we need to now add one to the LPs as we want to now when is the last block of the lease, and thet we remove one from the total block count.
-            const lastLeaseBlock = (lease+1)*lpd + so - 1;
-            const untilSaleRaw = (lastLeaseBlock - CORETIME_SALES_START)/(REGION_LENGTH*TIMESLICE_LENGTH) + 1
+            const lastLeaseBlock = (lease + 1) * lpd + so - 1;
+            const untilSaleRaw = (lastLeaseBlock - CORETIME_SALES_START) / (REGION_LENGTH * TIMESLICE_LENGTH) + 1
             const untilSale = Math.ceil(untilSaleRaw)
-            const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH*TIMESLICE_LENGTH) * (untilSale - 1)
-            if(untilSaleRaw > 1){
-                coretimeParaInfo.push({...paraInfo, coreUntilBlock:untilSaleBlock, renewCoreAtSaleCycle: untilSale - 1})
+            const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale - 1)
+            if (untilSaleRaw > 1) {
+                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: untilSaleBlock, renewCoreAtSaleCycle: untilSale - 1 })
             } else {
-                coretimeParaInfo.push({...paraInfo, coreUntilBlock:lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market"})
+                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market" })
             }
         })
     })
 
 
-    return {coretimeParaInfo}
+    return { coretimeParaInfo }
 }
 
 
 const getCurrentBlockHeight = async () => {
     const lastBlockHeader = await api.rpc.chain.getHeader();
     const lastBlockNumber = convertToNumber(lastBlockHeader.number.toHuman());
-    
-    return {lastBlockNumber}
+
+    return { lastBlockNumber }
 }
 
 const findParaName = (paraID) => {
@@ -153,7 +153,7 @@ const findParaName = (paraID) => {
     return paraName.length ? paraName[0].name : "NA"
 }
 
-const convertToNumber = (input) =>{
+const convertToNumber = (input) => {
     return Number(input.split(",").join(""));
 }
 
