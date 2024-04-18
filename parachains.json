@@ -191,6 +191,14 @@
         { 
             "name": "NA",
             "paraid": 3346
+        },
+        { 
+            "name": "Used to swap with Picasso",
+            "paraid": 3347
+        },
+        { 
+            "name": "Used to swap with Calamri",
+            "paraid": 3348
         }
     ],
     "polkadot":[

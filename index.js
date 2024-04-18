@@ -42,7 +42,11 @@ const buildApi = async (chain) => {
 const api = await buildApi(chain);
 
 // These are to be sourced by querying the chain when available. For now they are an educated guess.
-const CORETIME_SALES_START = 22793600;
+// Sale starts will be pushed by 1 week because of a runtime upgrade, although this needs to happen before interlude_lengh after sale_start.
+// I'll use the current sale start + interlude_length - 1 as a proxy of the maximum time available, but this could be less for teams.
+// Current sale start is 22793600
+// Interlude_length is 50400 blocks on the coretime chain (1B / 12s) therefore 100800 blocks on the relay chain
+const CORETIME_SALES_START = 22793600 + 100800 - 1;
 const REGION_LENGTH = 5040;
 const TIMESLICE_LENGTH = 80;
 
@@ -143,9 +147,12 @@ const calculateCoretimeTime = (leases, so, lpd) => {
             const lastLeaseBlock = (lease + 1) * lpd + so - 1;
             const untilSaleRaw = (lastLeaseBlock - CORETIME_SALES_START) / (REGION_LENGTH * TIMESLICE_LENGTH) + 1
             const untilSale = Math.ceil(untilSaleRaw)
-            const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale - 1)
-            if (untilSaleRaw > 1) {
+            if (untilSaleRaw > 2) {
+                const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale - 1)
                 coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: untilSaleBlock, renewCoreAtSaleCycle: untilSale - 1 })
+            } else if (untilSaleRaw > 1){
+                const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale)
+                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: untilSaleBlock, renewCoreAtSaleCycle: untilSale })
             } else {
                 coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market" })
             }
