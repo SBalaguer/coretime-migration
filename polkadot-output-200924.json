@@ -1,0 +1,546 @@
+[
+    {
+      "paraID": 2048,
+      "name": "Bitgreen",
+      "oldLeaseLastBlock": 22694400,
+      "coreUntilBlock": 23408400,
+      "coreUntilTimeslice": 283680,
+      "renewCoreAtSaleCycle": 2,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3375,
+      "name": "NA",
+      "oldLeaseLastBlock": 22694400,
+      "coreUntilBlock": 23408400,
+      "coreUntilTimeslice": 283680,
+      "renewCoreAtSaleCycle": 2,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3358,
+      "name": "NA",
+      "oldLeaseLastBlock": 22694400,
+      "coreUntilBlock": 23408400,
+      "coreUntilTimeslice": 283680,
+      "renewCoreAtSaleCycle": 2,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2053,
+      "name": "OmniBTC",
+      "oldLeaseLastBlock": 22694400,
+      "coreUntilBlock": 23408400,
+      "coreUntilTimeslice": 283680,
+      "renewCoreAtSaleCycle": 2,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2056,
+      "name": "Aventus",
+      "oldLeaseLastBlock": 22694400,
+      "coreUntilBlock": 23408400,
+      "coreUntilTimeslice": 283680,
+      "renewCoreAtSaleCycle": 2,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2094,
+      "name": "Pendulum",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2040,
+      "name": "Polkadex",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3333,
+      "name": "t3rn",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2106,
+      "name": "NA",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2093,
+      "name": "Hashed Network",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 2101,
+      "name": "Subsocial",
+      "oldLeaseLastBlock": 23904000,
+      "coreUntilBlock": 24214800,
+      "coreUntilTimeslice": 298800,
+      "renewCoreAtSaleCycle": 4,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3369,
+      "name": "NA",
+      "oldLeaseLastBlock": 25113600,
+      "coreUntilBlock": 25424400,
+      "coreUntilTimeslice": 313920,
+      "renewCoreAtSaleCycle": 7,
+      "currentLease": 302400,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2000,
+      "name": "Acala",
+      "oldLeaseLastBlock": 25113600,
+      "coreUntilBlock": 25424400,
+      "coreUntilTimeslice": 313920,
+      "renewCoreAtSaleCycle": 7,
+      "currentLease": 302400,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3338,
+      "name": "Peaq",
+      "oldLeaseLastBlock": 26323200,
+      "coreUntilBlock": 26634000,
+      "coreUntilTimeslice": 329040,
+      "renewCoreAtSaleCycle": 10,
+      "currentLease": 317520,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2004,
+      "name": "Moonbeam",
+      "oldLeaseLastBlock": 26323200,
+      "coreUntilBlock": 26634000,
+      "coreUntilTimeslice": 329040,
+      "renewCoreAtSaleCycle": 10,
+      "currentLease": 317520,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 1000,
+      "name": "AssetHub",
+      "oldLeaseLastBlock": 26323200,
+      "coreUntilBlock": 26634000,
+      "coreUntilTimeslice": 329040,
+      "renewCoreAtSaleCycle": 10,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3344,
+      "name": "Polimec",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3345,
+      "name": "Energy Web X",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3340,
+      "name": "InvArch",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2031,
+      "name": "Centrifuge",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3346,
+      "name": "NA",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2026,
+      "name": "Nodle",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2006,
+      "name": "Astar",
+      "oldLeaseLastBlock": 27532800,
+      "coreUntilBlock": 27843600,
+      "coreUntilTimeslice": 344160,
+      "renewCoreAtSaleCycle": 13,
+      "currentLease": 332640,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2035,
+      "name": "Phala Network",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2032,
+      "name": "Interlay",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2025,
+      "name": "SORA",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2002,
+      "name": "Clover",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2034,
+      "name": "HydraDX",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2012,
+      "name": "Parallel",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3354,
+      "name": "Logion",
+      "oldLeaseLastBlock": 28742400,
+      "coreUntilBlock": 29053200,
+      "coreUntilTimeslice": 359280,
+      "renewCoreAtSaleCycle": 16,
+      "currentLease": 347760,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3367,
+      "name": "NA",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2030,
+      "name": "Bifrost",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2046,
+      "name": "Darwinia",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3366,
+      "name": "NA",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2037,
+      "name": "Unique Network",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2043,
+      "name": "NeuroWeb",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2013,
+      "name": "Litentry",
+      "oldLeaseLastBlock": 29952000,
+      "coreUntilBlock": 30262800,
+      "coreUntilTimeslice": 374400,
+      "renewCoreAtSaleCycle": 19,
+      "currentLease": 362880,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3370,
+      "name": "NA",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2086,
+      "name": "Kilt",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2051,
+      "name": "Ajuna Network",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2008,
+      "name": "Crust",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3359,
+      "name": "NA",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3377,
+      "name": "NA",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3373,
+      "name": "NA",
+      "oldLeaseLastBlock": 31161600,
+      "coreUntilBlock": 31472400,
+      "coreUntilTimeslice": 389520,
+      "renewCoreAtSaleCycle": 22,
+      "currentLease": 378000,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2092,
+      "name": "Zeitgeist",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3378,
+      "name": "NA",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2104,
+      "name": "Manta",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 1001,
+      "name": "Collectives",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 3389,
+      "name": "NA",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2090,
+      "name": "OAK Network",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3397,
+      "name": "NA",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 2091,
+      "name": "Frequency",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 3388,
+      "name": "NA",
+      "oldLeaseLastBlock": 32371200,
+      "coreUntilBlock": 32682000,
+      "coreUntilTimeslice": 404640,
+      "renewCoreAtSaleCycle": 25,
+      "currentLease": 393120,
+      "timesliceDiff": 11520
+    },
+    {
+      "paraID": 1002,
+      "name": "BridgeHub",
+      "oldLeaseLastBlock": 34790400,
+      "coreUntilBlock": 35101200,
+      "coreUntilTimeslice": 434880,
+      "renewCoreAtSaleCycle": 31,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 1004,
+      "name": "NA",
+      "oldLeaseLastBlock": 40838400,
+      "coreUntilBlock": 41149200,
+      "coreUntilTimeslice": 510480,
+      "renewCoreAtSaleCycle": 46,
+      "currentLease": "NA"
+    },
+    {
+      "paraID": 1005,
+      "name": "NA",
+      "oldLeaseLastBlock": 40838400,
+      "coreUntilBlock": 41149200,
+      "coreUntilTimeslice": 510480,
+      "renewCoreAtSaleCycle": 46,
+      "currentLease": "NA"
+    }
+]
