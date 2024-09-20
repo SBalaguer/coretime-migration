@@ -3,51 +3,21 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 import { argv } from 'node:process';
 import parachainsInfo from './parachains.json' assert { type: "json" };
 
-let chain;
-let parachains;
+let parachains = parachainsInfo.polkadot;
 
-argv.filter((val) => {
-    const parsedVal = val.split("=");
-    if (parsedVal[0] === 'chain') {
-        if (parsedVal[1] === 'kusama') {
-            chain = 'kusama';
-            parachains = parachainsInfo.kusama
-        } else {
-            chain = 'polkadot'
-            parachains = parachainsInfo.polkadot
-            console.log("Polkadot not yet available")
-            process.exit()
-        }
-    } else {
-        //makes kusama default for now
-        chain = 'kusama'
-        parachains = parachainsInfo.kusama
-    }
-});
+const wsProviderPolkadot = new WsProvider('wss://rpc.polkadot.io');
+const api = await ApiPromise.create({ provider: wsProviderPolkadot });
 
-const buildApi = async (chain) => {
-    let api
-    switch (chain) {
-        case "kusama":
-            const wsProviderKusama = new WsProvider('wss://kusama-rpc.polkadot.io');
-            api = await ApiPromise.create({ provider: wsProviderKusama });
-            break;
-        default:
-            const wsProviderPolkadot = new WsProvider('wss://rpc.polkadot.io');
-            api = await ApiPromise.create({ provider: wsProviderPolkadot });
-    }
-    return api
-}
+const wsProviderPolkadotCoretime = new WsProvider('wss://polkadot-coretime-rpc.polkadot.io');
+const apiCoretime = await ApiPromise.create({ provider: wsProviderPolkadotCoretime });
 
-const api = await buildApi(chain);
 
 // These are to be sourced by querying the chain when available. For now they are an educated guess.
 // Sale starts will be pushed by 1 week because of a runtime upgrade, although this needs to happen before interlude_lengh after sale_start.
 // I'll use the current sale start + interlude_length - 1 as a proxy of the maximum time available, but this could be less for teams.
 // Current sale start is 22793600
 // Interlude_length is 50400 blocks on the coretime chain (1B / 12s) therefore 100800 blocks on the relay chain
-const CORETIME_SALES_START = 22793600 + 100800 - 1;
-// const CORETIME_SALES_START = 22861478
+const CORETIME_SALES_START = 22602000
 const REGION_LENGTH = 5040;
 const TIMESLICE_LENGTH = 80;
 
@@ -58,13 +28,31 @@ async function main() {
     // Get last Nlock Number
     const { lastBlockNumber } = await getCurrentBlockHeight()
 
-
     //Calculate current lease period
     const currentLeasePeriod = Math.floor((lastBlockNumber - slotOffset) / leasePeriodDuration);
 
     const { allRemainingLeases } = await remainingLeases(currentLeasePeriod, slotOffset, leasePeriodDuration)
 
     const { coretimeParaInfo } = calculateCoretimeTime(allRemainingLeases, slotOffset, leasePeriodDuration);
+
+    const { currentLeases } = await coretimeLeases()
+    console.log(currentLeases)
+
+    const comparaParaInfo = coretimeParaInfo.map(paraInfo => {
+        const paraLease = currentLeases.filter(paraLease => paraLease.paraID === paraInfo.paraID)
+        if (paraLease.length){
+            return {
+                ...paraInfo,
+                currentLease: paraLease[0].timeslice,
+                timesliceDiff: paraInfo.coreUntilTimeslice - paraLease[0].timeslice
+            }
+        } else {
+            return {
+                ...paraInfo,
+                currentLease: "NA"
+            }
+        }
+    })
 
     const coresSummary = {}
     let totalCount = 0;
@@ -87,8 +75,8 @@ async function main() {
     console.log(coresSummary)
     console.log()
     console.log("PARAID DETAILS")
-    console.log(coretimeParaInfo)
-
+    // console.log(coretimeParaInfo)
+    console.log(comparaParaInfo)
 
 }
 
@@ -150,12 +138,12 @@ const calculateCoretimeTime = (leases, so, lpd) => {
             const untilSale = Math.ceil(untilSaleRaw)
             if (untilSaleRaw > 2) {
                 const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale - 1)
-                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: untilSaleBlock, renewCoreAtSaleCycle: untilSale - 1 })
+                coretimeParaInfo.push({ ...paraInfo, oldLeaseLastBlock:lastLeaseBlock+1 ,coreUntilBlock: untilSaleBlock, coreUntilTimeslice: (lastLeaseBlock+1)/TIMESLICE_LENGTH, renewCoreAtSaleCycle: untilSale - 1 })
             } else if (untilSaleRaw > 1){
                 const untilSaleBlock = CORETIME_SALES_START + (REGION_LENGTH * TIMESLICE_LENGTH) * (untilSale)
-                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: untilSaleBlock, renewCoreAtSaleCycle: untilSale })
+                coretimeParaInfo.push({ ...paraInfo, oldLeaseLastBlock:lastLeaseBlock+1, coreUntilBlock: untilSaleBlock, coreUntilTimeslice: (lastLeaseBlock+1)/TIMESLICE_LENGTH, renewCoreAtSaleCycle: untilSale })
             } else {
-                coretimeParaInfo.push({ ...paraInfo, coreUntilBlock: lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market" })
+                coretimeParaInfo.push({ ...paraInfo, oldLeaseLastBlock:lastLeaseBlock+1, coreUntilBlock: lastLeaseBlock + 1, renewCoreAtSaleCycle: "Buys on Open Market" })
             }
         })
     })
@@ -164,6 +152,19 @@ const calculateCoretimeTime = (leases, so, lpd) => {
     return { coretimeParaInfo }
 }
 
+const coretimeLeases = async () => {
+    const leases = await (await apiCoretime.query.broker.leases()).toHuman()
+    const currentLeases = []
+
+    leases.map(lease => {
+        currentLeases.push({
+            paraID: convertToNumber(lease.task),
+            timeslice: convertToNumber(lease.until)
+        })
+    })
+
+    return { currentLeases }
+}
 
 const getCurrentBlockHeight = async () => {
     const lastBlockHeader = await api.rpc.chain.getHeader();
